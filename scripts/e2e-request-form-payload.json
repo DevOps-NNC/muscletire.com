@@ -1,0 +1,23 @@
+{
+  "json": {
+    "fullName": "Website Form QA — Please Delete",
+    "phone": "407-555-0199",
+    "email": "qa-request-form@example.com",
+    "preferredContact": "email",
+    "streetAddress": "4301 Urbana Drive",
+    "city": "__CITY__",
+    "zipCode": "32837",
+    "locationType": "home",
+    "locationNotes": "AUTOMATED QA TEST — safe to delete after verification.",
+    "vehicleYear": "2020",
+    "vehicleMake": "Toyota",
+    "vehicleModel": "Camry",
+    "requestedService": "Diagnostics",
+    "mainSymptom": "AUTOMATED QA TEST — verifying service request delivery only.",
+    "problemDescription": "No service is requested. This test validates website lead creation and Zapier handoff.",
+    "vehicleStarts": true,
+    "vehicleSafe": true,
+    "isAsap": false,
+    "customerNotes": "AUTOMATED QA TEST — please delete from CRM after verification."
+  }
+}

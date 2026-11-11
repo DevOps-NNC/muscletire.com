@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /request-confirmation
+Sitemap: __BUSINESS_URL__/sitemap.xml

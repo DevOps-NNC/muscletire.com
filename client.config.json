@@ -1,0 +1,34 @@
+{
+  "business": {
+    "name": "Example Mobile Mechanic",
+    "legalName": "Example Mobile Mechanic LLC",
+    "ownerName": "Owner",
+    "phone": "(555) 010-0100",
+    "email": "hello@example.com",
+    "domain": "example.com",
+    "www": true,
+    "city": "Sample City",
+    "region": "Sample Region",
+    "state": "Florida",
+    "stateCode": "FL",
+    "zip": "00000",
+    "address": "Enter verified business address"
+  },
+  "serviceAreas": [
+    {
+      "name": "Sample City",
+      "slug": "sample-city",
+      "description": "Service availability is confirmed after reviewing location and vehicle needs.",
+      "zipCodes": []
+    }
+  ],
+  "social": {
+    "googleBusinessProfile": "",
+    "facebook": "",
+    "instagram": "",
+    "tiktok": ""
+  },
+  "integrations": {
+    "googleTagManagerId": ""
+  }
+}

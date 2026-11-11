@@ -1,0 +1,144 @@
+{
+  "version": 2,
+  "buildCommand": "pnpm build",
+  "outputDirectory": "dist/public",
+  "devCommand": "pnpm dev",
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "routes": [
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/api/amp/leads",
+      "dest": "/api/crm-handler.js"
+    },
+    {
+      "src": "/api/analytics/google/(.*)",
+      "dest": "/api/crm-handler.js"
+    },
+    {
+      "src": "/api/analytics/cron",
+      "dest": "/api/crm-handler.js"
+    },
+    {
+      "src": "/api/v1/(.*)",
+      "dest": "/api/crm-handler.js"
+    },
+    {
+      "src": "/api/blog/cron",
+      "dest": "/api/crm-handler.js"
+    },
+    {
+      "src": "/api/trpc(.*)",
+      "dest": "/api/crm-handler.js"
+    },
+    {
+      "src": "/api/auth(.*)",
+      "dest": "/api/crm-handler.js"
+    },
+    {
+      "src": "/api/storage(.*)",
+      "dest": "/api/crm-handler.js"
+    },
+    {
+      "src": "/admin(.*)",
+      "dest": "/noindex.html"
+    },
+    {
+      "src": "/request-confirmation",
+      "dest": "/noindex.html"
+    },
+    {
+      "src": "/amp",
+      "dest": "/amp.html"
+    },
+    {
+      "src": "/services/(.*)/amp",
+      "dest": "/services/$1/amp.html"
+    },
+    {
+      "src": "/services/amp",
+      "dest": "/services/amp.html"
+    },
+    {
+      "src": "/service-areas/(.*)/amp",
+      "dest": "/service-areas/$1/amp.html"
+    },
+    {
+      "src": "/service-areas/amp",
+      "dest": "/service-areas/amp.html"
+    },
+    {
+      "src": "/blog/(.*)/amp",
+      "dest": "/blog/$1/amp.html"
+    },
+    {
+      "src": "/blog/amp",
+      "dest": "/blog/amp.html"
+    },
+    {
+      "src": "/(about|reviews|faq|contact|request-service|privacy|terms)/amp",
+      "dest": "/$1/amp.html"
+    },
+    {
+      "src": "/services",
+      "dest": "/services.html"
+    },
+    {
+      "src": "/services/(.*)",
+      "dest": "/services/$1.html"
+    },
+    {
+      "src": "/service-areas",
+      "dest": "/service-areas.html"
+    },
+    {
+      "src": "/service-areas/(.*)",
+      "dest": "/service-areas/$1.html"
+    },
+    {
+      "src": "/about",
+      "dest": "/about.html"
+    },
+    {
+      "src": "/reviews",
+      "dest": "/reviews.html"
+    },
+    {
+      "src": "/faq",
+      "dest": "/faq.html"
+    },
+    {
+      "src": "/contact",
+      "dest": "/contact.html"
+    },
+    {
+      "src": "/request-service",
+      "dest": "/request-service.html"
+    },
+    {
+      "src": "/privacy",
+      "dest": "/privacy.html"
+    },
+    {
+      "src": "/terms",
+      "dest": "/terms.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/analytics/cron",
+      "schedule": "0 7 * * *"
+    },
+    {
+      "path": "/api/blog/cron",
+      "schedule": "0 8 * * *"
+    }
+  ]
+}

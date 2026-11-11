@@ -1,0 +1,116 @@
+import { describe, expect, it } from "vitest";
+import { normalizePublishedArticles, serializePublishedArticles, type PublishedArticleRecord } from "./publishedBlog";
+
+describe("published blog export", () => {
+  it("keeps only indexable published articles and orders newest first", () => {
+    const rows: PublishedArticleRecord[] = [
+      {
+        id: 1,
+        slug: "draft-guide",
+        title: "Draft guide",
+        excerpt: null,
+        content: "draft",
+        featuredImage: null,
+        authorName: "__BUSINESS_NAME__",
+        category: "Vehicle care",
+        metaTitle: null,
+        metaDescription: null,
+        ogImage: null,
+        status: "draft",
+        publishedAt: null,
+        noIndex: false,
+        readingTime: null,
+        relatedServices: null,
+        faqs: null,
+        updatedAt: new Date("2026-09-20T00:00:00Z"),
+      },
+      {
+        id: 2,
+        slug: "older-guide",
+        title: "Older guide",
+        excerpt: "Older excerpt",
+        content: "older",
+        featuredImage: null,
+        authorName: "Author",
+        category: "Vehicle care",
+        metaTitle: "Older title",
+        metaDescription: "Older description",
+        ogImage: null,
+        status: "published",
+        publishedAt: new Date("2026-09-21T00:00:00Z"),
+        noIndex: false,
+        readingTime: 3,
+        relatedServices: ["diagnostics"],
+        faqs: [],
+        updatedAt: new Date("2026-09-21T00:00:00Z"),
+      },
+      {
+        id: 3,
+        slug: "newer-guide",
+        title: "Newer guide",
+        excerpt: "Newer excerpt",
+        content: "newer",
+        featuredImage: null,
+        authorName: "Author",
+        category: "Vehicle care",
+        metaTitle: null,
+        metaDescription: null,
+        ogImage: null,
+        status: "published",
+        publishedAt: new Date("2026-09-22T00:00:00Z"),
+        noIndex: false,
+        readingTime: null,
+        relatedServices: null,
+        faqs: null,
+        updatedAt: new Date("2026-09-22T00:00:00Z"),
+      },
+      {
+        id: 4,
+        slug: "noindex-guide",
+        title: "Noindex guide",
+        excerpt: null,
+        content: "noindex",
+        featuredImage: null,
+        authorName: "Author",
+        category: null,
+        metaTitle: null,
+        metaDescription: null,
+        ogImage: null,
+        status: "published",
+        publishedAt: new Date("2026-09-23T00:00:00Z"),
+        noIndex: true,
+        readingTime: null,
+        relatedServices: null,
+        faqs: null,
+        updatedAt: new Date("2026-09-23T00:00:00Z"),
+      },
+    ];
+
+    expect(normalizePublishedArticles(rows).map(article => article.slug)).toEqual(["newer-guide", "older-guide"]);
+  });
+
+  it("serializes a deterministic build-time export without customer data", () => {
+    const [article] = normalizePublishedArticles([{
+      id: 9,
+      slug: "guide",
+      title: "Guide",
+      excerpt: "Excerpt",
+      content: "# Body",
+      featuredImage: null,
+      authorName: "Author",
+      category: "Vehicle care",
+      metaTitle: null,
+      metaDescription: null,
+      ogImage: null,
+      status: "published",
+      publishedAt: new Date("2026-09-24T00:00:00Z"),
+      noIndex: false,
+      readingTime: null,
+      relatedServices: null,
+      faqs: null,
+      updatedAt: new Date("2026-09-24T00:00:00Z"),
+    }]);
+
+    expect(JSON.parse(serializePublishedArticles([article]))).toEqual([article]);
+  });
+});
